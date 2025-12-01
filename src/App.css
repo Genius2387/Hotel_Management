@@ -23,6 +23,11 @@
           box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
+        .active {
+          color: skyblue;   /* highlight color */
+          border-bottom: 2px solid skyblue;
+      }
+
         .logo {
           font-size: 1.8rem;
           font-weight: bold;
@@ -63,39 +68,195 @@
 
         /* Home Section */
         .home {
-          height: 90vh;
+          min-height: 100vh;
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           display: flex;
           align-items: center;
           justify-content: center;
           color: white;
+          position: relative;
+          overflow: hidden;
+          padding: 8rem 5% 4rem;
+        }
+
+        .home-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+          pointer-events: none;
+        }
+
+        .home-container {
+          max-width: 1200px;
+          width: 100%;
+          position: relative;
+          z-index: 1;
+        }
+
+        .home-content {
           text-align: center;
+          margin-bottom: 4rem;
         }
 
-        .home-content h1 {
-          font-size: 4rem;
+        .welcome-tag {
+          display: inline-block;
+          background: rgba(255,255,255,0.2);
+          padding: 0.5rem 1.5rem;
+          border-radius: 50px;
+          font-size: 0.9rem;
+          margin-bottom: 1.5rem;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .main-heading {
+          font-size: 4.5rem;
           margin-bottom: 1rem;
+          font-weight: 800;
+          line-height: 1.2;
         }
 
-        .home-content p {
-          font-size: 1.5rem;
-          margin-bottom: 2rem;
+        .highlight {
+          display: block;
+          background: linear-gradient(90deg, #fff, #f0f0f0);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-weight: 900;
+        }
+
+        .tagline {
+          font-size: 1.3rem;
+          margin-bottom: 2.5rem;
+          max-width: 700px;
+          margin-left: auto;
+          margin-right: auto;
+          line-height: 1.6;
+          opacity: 0.95;
+        }
+
+        .cta-buttons {
+          display: flex;
+          gap: 1.5rem;
+          justify-content: center;
+          margin-bottom: 4rem;
         }
 
         .explore-btn {
-          background: white;
-          color: #667eea;
-          padding: 1rem 2rem;
-          border-radius: 30px;
-          text-decoration: none;
+          padding: 1rem 2.5rem;
+          border-radius: 50px;
           font-weight: 600;
-          transition: transform 0.3s;
-          display: inline-block;
+          font-size: 1.1rem;
+          cursor: pointer;
+          transition: all 0.3s;
+          border: none;
+          text-decoration: none;
         }
 
-        .explore-btn:hover {
+        .explore-btn.primary {
+          background: white;
+          color: #667eea;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .explore-btn.primary:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .explore-btn.secondary {
+          background: transparent;
+          color: white;
+          border: 2px solid white;
+        }
+
+        .explore-btn.secondary:hover {
+          background: white;
+          color: #667eea;
           transform: translateY(-3px);
         }
+
+        .quick-features {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+          margin-top: 3rem;
+        }
+
+        .feature-item {
+          background: rgba(255,255,255,0.15);
+          padding: 1.5rem;
+          border-radius: 15px;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255,255,255,0.2);
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+          background: rgba(255,255,255,0.25);
+          transform: translateY(-5px);
+        }
+
+        .feature-icon {
+          font-size: 2.5rem;
+        }
+
+        .feature-text {
+          text-align: left;
+        }
+
+        .feature-text h4 {
+          font-size: 1.1rem;
+          margin-bottom: 0.3rem;
+          font-weight: 600;
+        }
+
+        .feature-text p {
+          font-size: 0.9rem;
+          opacity: 0.9;
+        }
+
+        .home-stats {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 3rem;
+          background: rgba(255,255,255,0.1);
+          padding: 2rem 3rem;
+          border-radius: 20px;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255,255,255,0.2);
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .stat-item {
+          text-align: center;
+        }
+
+        .stat-item h3 {
+          font-size: 3rem;
+          font-weight: 800;
+          margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+          font-size: 1rem;
+          opacity: 0.9;
+        }
+
+        .stat-divider {
+          width: 2px;
+          height: 60px;
+          background: rgba(255,255,255,0.3);
+        }
+
 
         /* Common Section Styles */
         section {
@@ -279,10 +440,18 @@
         }
 
         .gallery-item {
-          height: 250px;
-          border-radius: 15px;
-          transition: transform 0.3s;
-        }
+  width: 100%;
+  height: 250px; /* or whatever size you want */
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* change to contain if you want full fit */
+}
+
 
         .gallery-item:hover {
           transform: scale(1.05);
@@ -511,5 +680,37 @@
           .contact-content {
             grid-template-columns: 1fr;
           }
+
+          .main-heading {
+            font-size: 2.5rem !important;
+          }
+
+          .tagline {
+            font-size: 1rem !important;
+          }
+
+          .cta-buttons {
+            flex-direction: column;
+            gap: 1rem !important;
+          }
+
+          .explore-btn {
+            width: 100%;
+          }
+
+          .quick-features {
+            grid-template-columns: 1fr !important;
+          }
+
+          .home-stats {
+            flex-direction: column;
+            gap: 1.5rem !important;
+          }
+
+          .stat-divider {
+            width: 100px !important;
+            height: 2px !important;
+          }
+
         }
       
